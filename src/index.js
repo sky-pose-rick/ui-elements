@@ -1,5 +1,6 @@
 import dropdown from './dropdown';
 import carousel from './imageCarousel';
+import form from './form';
 
 //  code to use the dropdown
 const ddHolder = document.querySelector('#dropdown');
@@ -17,8 +18,8 @@ const dropdownElem = dropdown.dropdownFactory(ddSampleTitle, [ddButton1, ddButto
 dropdownElem.attachTo(dropdownElem, ddHolder);
 
 //  code to use the carousel
-const content = document.querySelector('#c-container');
-const carouselElem = carousel.carouselFactory(content);
+const cContent = document.querySelector('#c-container');
+const carouselElem = carousel.carouselFactory(cContent);
 
 const imageSrcs = ['https://i.ytimg.com/vi/bHZVwmiWPNM/maxresdefault.jpg',
   'https://cdnen.samurai-gamers.com/wp-content/uploads/2021/05/16163043/sg-smt-3-nocturne-hd-remaster-thor-demon-boss.jpg',
@@ -29,3 +30,8 @@ const imageSrcs = ['https://i.ytimg.com/vi/bHZVwmiWPNM/maxresdefault.jpg',
 imageSrcs.forEach((src) => {
   carouselElem.addImage(carouselElem, src);
 });
+
+// code to use the form
+const formHolder = document.querySelector('#sample-form');
+const formElem = form.formFactory();
+console.log([formHolder, formElem]);
