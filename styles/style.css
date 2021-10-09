@@ -17,3 +17,79 @@ h2{
     margin: 0;
     padding: 0;
 }
+
+#c-container{
+    width: 600px;
+    height: 400px;
+    margin: auto;
+}
+
+.carousel {
+    height:100%;
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    grid-template-rows: 6fr 2fr 6fr 1fr;
+    grid-template-areas: 
+        ". a ."
+        "b a d"
+        ". a ."
+        "c c c";
+    background-color: cyan;
+}
+
+.carousel-slider-view {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    grid-area: a;
+}
+
+.carousel-slider {
+    height: 100%;
+    display: flex;
+    position: relative;
+    right: 0%;
+}
+
+.carousel-img-holder {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: gray;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.carousel-arrow-left {
+    grid-area: b;
+}
+
+.carousel-arrow-right {
+    grid-area: d;
+}
+
+.carousel-tab-holder {
+    grid-area: c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-tab {
+    border-radius: 50%;
+    margin-left: 3px;
+    margin-right: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.carousel-tab-selected{
+    background-color: black;
+}
