@@ -93,3 +93,15 @@ h2{
 .carousel-tab-selected{
     background-color: black;
 }
+
+label{
+    display: block;
+}
+
+input:invalid{
+    box-shadow: 1px 1px 4px red;
+}
+
+input:invalid:focus{
+    box-shadow: none;
+}
