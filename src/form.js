@@ -54,6 +54,8 @@ const formFactory = (container) => {
     const input = inputFactory(title, 'email', validation, true);
     inputs.push(input);
     form.insertBefore(input.label, submit);
+
+    return input.input;
   };
 
   const addText = (title, errorMessage) => {
@@ -67,6 +69,8 @@ const formFactory = (container) => {
     const input = inputFactory(title, 'text', validation, true);
     inputs.push(input);
     form.insertBefore(input.label, submit);
+
+    return input.input;
   };
 
   const addPattern = (title, pattern, errorMessage) => {
@@ -83,6 +87,8 @@ const formFactory = (container) => {
 
     // add the pattern to the input
     input.input.setAttribute('pattern', pattern);
+
+    return input.input;
   };
 
   const addPassword = (title, minLength, errorMessage) => {
@@ -99,11 +105,28 @@ const formFactory = (container) => {
 
     // add the minlength to the input
     input.input.setAttribute('minLength', 5);
+
+    return input.input;
+  };
+
+  const addPasswordConfirm = (title, password, errorMessage) => {
+    const validation = (elem) => {
+      if (elem.value !== password.value) {
+        elem.setCustomValidity(errorMessage);
+      } else {
+        elem.setCustomValidity('');
+      }
+    };
+    const input = inputFactory(title, 'password', validation, true);
+    inputs.push(input);
+    form.insertBefore(input.label, submit);
+
+    return input.input;
   };
 
   //  do stuff
   const obj = {
-    form, inputs, addEmail, addText, addPattern, addPassword,
+    form, inputs, addEmail, addText, addPattern, addPassword, addPasswordConfirm,
   };
   return obj;
 };
