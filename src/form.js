@@ -34,7 +34,11 @@ const formFactory = (container) => {
   submit.setAttribute('type', 'submit');
   submit.addEventListener('click', (event) => {
     //  prevent page reload
-    //  event.preventDefault();
+    if (inputs.some((elem) => !elem.input.checkValidity())) {
+      return false;
+    }
+    console.log('Form Complete!');
+    event.preventDefault();
   });
   form.appendChild(submit);
 
@@ -51,8 +55,23 @@ const formFactory = (container) => {
     form.insertBefore(input.label, submit);
   };
 
+  const addText = (title) => {
+    const validation = (elem) => {
+      if (!elem.checkValidity()) {
+        elem.setCustomValidity('Please enter a country');
+      } else {
+        elem.setCustomValidity('');
+      }
+    };
+    const input = inputFactory(title, 'text', validation, true);
+    inputs.push(input);
+    form.insertBefore(input.label, submit);
+  };
+
   //  do stuff
-  const obj = { form, inputs, addEmail };
+  const obj = {
+    form, inputs, addEmail, addText,
+  };
   return obj;
 };
 

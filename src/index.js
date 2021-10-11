@@ -35,3 +35,4 @@ imageSrcs.forEach((src) => {
 const formHolder = document.querySelector('#sample-form');
 const formObj = form.formFactory(formHolder);
 formObj.addEmail('Email');
+formObj.addText('Country');
