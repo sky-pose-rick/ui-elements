@@ -16,6 +16,7 @@ const inputFactory = (name, type, validation, required) => {
   input.addEventListener('blur', () => {
     validation(input);
   });
+  //  reset form validity when editing
   input.addEventListener('focus', () => {
     input.setCustomValidity('');
   });
@@ -55,10 +56,10 @@ const formFactory = (container) => {
     form.insertBefore(input.label, submit);
   };
 
-  const addText = (title) => {
+  const addText = (title, errorMessage) => {
     const validation = (elem) => {
       if (!elem.checkValidity()) {
-        elem.setCustomValidity('Please enter a country');
+        elem.setCustomValidity(errorMessage);
       } else {
         elem.setCustomValidity('');
       }
@@ -68,9 +69,41 @@ const formFactory = (container) => {
     form.insertBefore(input.label, submit);
   };
 
+  const addPattern = (title, pattern, errorMessage) => {
+    const validation = (elem) => {
+      if (!elem.checkValidity()) {
+        elem.setCustomValidity(errorMessage);
+      } else {
+        elem.setCustomValidity('');
+      }
+    };
+    const input = inputFactory(title, 'text', validation, true);
+    inputs.push(input);
+    form.insertBefore(input.label, submit);
+
+    // add the pattern to the input
+    input.input.setAttribute('pattern', pattern);
+  };
+
+  const addPassword = (title, minLength, errorMessage) => {
+    const validation = (elem) => {
+      if (!elem.checkValidity()) {
+        elem.setCustomValidity(errorMessage);
+      } else {
+        elem.setCustomValidity('');
+      }
+    };
+    const input = inputFactory(title, 'password', validation, true);
+    inputs.push(input);
+    form.insertBefore(input.label, submit);
+
+    // add the minlength to the input
+    input.input.setAttribute('minLength', 5);
+  };
+
   //  do stuff
   const obj = {
-    form, inputs, addEmail, addText,
+    form, inputs, addEmail, addText, addPattern, addPassword,
   };
   return obj;
 };

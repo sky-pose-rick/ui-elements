@@ -35,4 +35,6 @@ imageSrcs.forEach((src) => {
 const formHolder = document.querySelector('#sample-form');
 const formObj = form.formFactory(formHolder);
 formObj.addEmail('Email');
-formObj.addText('Country');
+formObj.addText('Country', 'Please enter a country');
+formObj.addPattern('Postal Code', '[a-zA-Z]\\d[a-zA-Z]\\s?\\d[a-zA-Z]\\d', 'Please enter a valid postal code');
+formObj.addPassword('Password', 5, 'Please provide a password');
