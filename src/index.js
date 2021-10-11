@@ -33,5 +33,5 @@ imageSrcs.forEach((src) => {
 
 // code to use the form
 const formHolder = document.querySelector('#sample-form');
-const formElem = form.formFactory();
-console.log([formHolder, formElem]);
+const formObj = form.formFactory(formHolder);
+formObj.addEmail('Email');
